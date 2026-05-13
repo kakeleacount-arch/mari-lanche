@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#C9943A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Mari Massas" />
+
+  <!-- SEO -->
+  <title>Mari Massas — Massa de verdade. Feita com amor.</title>
+  <meta name="description" content="Massas artesanais e lanches em Marabá-PA. Peça agora pelo site e receba em casa!" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mari Massas — Marabá-PA" />
+  <meta property="og:description" content="Massa de verdade. Feita com amor. Peça online agora!" />
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Mari Massas",
+    "servesCuisine": ["Italian", "Brazilian", "Fast Food"],
+    "telephone": "+556298478229",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Marabá",
+      "addressRegion": "PA",
+      "addressCountry": "BR"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SPLASH SCREEN                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="splash">
+    <div class="splash-content">
+      <div class="splash-logo">
+        <div class="splash-icon">🍝</div>
+        <h1 class="splash-title">Mari Massas</h1>
+        <p class="splash-tagline">Massa de verdade. Feita com amor.</p>
+      </div>
+      <div class="splash-bar-wrap">
+        <div class="splash-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SCROLL PROGRESS BAR                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="scroll-progress"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVBAR                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-emoji">🍝</span>
+        <span class="nav-name">Mari Massas</span>
+      </div>
+      <div class="nav-actions">
+        <!-- Theme toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+        <!-- Cart button -->
+        <button class="nav-cart-btn" id="navCartBtn" aria-label="Abrir carrinho">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- LIVE ORDERS TICKER                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="live-ticker" id="liveTicker">
+    <span class="ticker-dot"></span>
+    <span id="tickerText">🍝 Carla pediu Mary Massa Bolonhesa agora</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO SECTION                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⭐ Especialidade da Casa</div>
+      <h1 class="hero-title">
+        <span class="hero-title-main">Mary</span>
+        <em class="hero-title-em">Massa</em>
+      </h1>
+      <p class="hero-sub">Marabá-PA · Entrega na sua porta</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" id="ordersCount">127</span>
+          <span class="stat-label">pedidos hoje</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">★ 4.9</span>
+          <span class="stat-label">avaliação</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">~35min</span>
+          <span class="stat-label">entrega</span>
+        </div>
+      </div>
+      <button class="hero-cta" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
+        Ver Cardápio
+      </button>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plate">🍝</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SEARCH BAR                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="search-section">
+    <div class="search-wrap">
+      <span class="search-icon-inp">🔍</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar no cardápio…" autocomplete="off" />
+      <button class="search-clear" id="searchClear" style="display:none">✕</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORIES                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="categories-section">
+    <div class="categories-scroll" id="categoriesScroll">
+      <button class="cat-btn active" data-cat="massas">🍝 Massas</button>
+      <button class="cat-btn" data-cat="hamburgueres">🍔 Hambúrgueres</button>
+      <button class="cat-btn" data-cat="batatas">🍟 Batatas</button>
+      <button class="cat-btn" data-cat="salgados">🥟 Salgados</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MENU SECTION                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <main class="menu-section" id="menu">
+
+    <!-- MASSAS -->
+    <div class="menu-category" id="cat-massas">
+      <div class="category-header">
+        <h2 class="category-title">🍝 Mary Massa</h2>
+        <span class="category-badge specialty">⭐ Especialidade da Casa</span>
+      </div>
+      <p class="category-desc">Monte sua massa do jeito que você quiser. Escolha a massa, o molho e os acompanhamentos.</p>
+      <div class="products-grid" id="grid-massas">
+        <!-- Gerado pelo JS -->
+      </div>
+    </div>
+
+    <!-- HAMBÚRGUERES -->
+    <div class="menu-category" id="cat-hamburgueres">
+      <div class="category-header">
+        <h2 class="category-title">🍔 Hambúrgueres</h2>
+      </div>
+      <div class="products-grid" id="grid-hamburgueres"></div>
+    </div>
+
+    <!-- BATATAS -->
+    <div class="menu-category" id="cat-batatas">
+      <div class="category-header">
+        <h2 class="category-title">🍟 Porções de Batata</h2>
+      </div>
+      <div class="products-grid" id="grid-batatas"></div>
+    </div>
+
+    <!-- SALGADOS -->
+    <div class="menu-category" id="cat-salgados">
+      <div class="category-header">
+        <h2 class="category-title">🥟 Salgados</h2>
+      </div>
+      <div class="products-grid" id="grid-salgados"></div>
+    </div>
+
+    <!-- SEARCH EMPTY STATE -->
+    <div class="search-empty" id="searchEmpty" style="display:none">
+      <p>😕 Nenhum produto encontrado para "<span id="searchTerm"></span>"</p>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- REVIEWS SECTION                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="reviews-section" id="reviews">
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+    <div class="reviews-carousel" id="reviewsCarousel">
+      <!-- Gerado pelo JS -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CHECKOUT SECTION                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="checkout-section" id="checkout" style="display:none">
+    <div class="checkout-inner">
+      <!-- STEPPER -->
+      <div class="stepper" id="stepper">
+        <div class="step active" data-step="1"><span class="step-num">1</span><span class="step-label">Pedido</span></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="2"><span class="step-num">2</span><span class="step-label">Endereço</span></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3"><span class="step-num">3</span><span class="step-label">Pagamento</span></div>
+        <div class="step-line"></div>
+        <div class="step" data-step="4"><span class="step-num">4</span><span class="step-label">Confirmar</span></div>
+      </div>
+
+      <!-- STEP 1: ORDER SUMMARY -->
+      <div class="checkout-step" id="step1">
+        <h3 class="step-title">Seu pedido</h3>
+        <div id="checkoutItems"></div>
+        <div class="coupon-row">
+          <input type="text" id="couponInput" class="coupon-input" placeholder="Código de cupom (ex: MARIFIRST)" />
+          <button class="coupon-btn" id="couponBtn">Aplicar</button>
+        </div>
+        <div id="couponMsg" class="coupon-msg"></div>
+        <button class="next-step-btn" onclick="goToStep(2)">Continuar → Endereço</button>
+      </div>
+
+      <!-- STEP 2: ADDRESS -->
+      <div class="checkout-step" id="step2" style="display:none">
+        <h3 class="step-title">Seu endereço</h3>
+        <div class="form-group">
+          <label class="form-label">Nome completo *</label>
+          <input type="text" id="fieldName" class="form-input" placeholder="Seu nome" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rua e número *</label>
+          <input type="text" id="fieldStreet" class="form-input" placeholder="Ex: Rua das Flores, 123" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Bairro *</label>
+            <input type="text" id="fieldNeighborhood" class="form-input" placeholder="Seu bairro" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Complemento</label>
+            <input type="text" id="fieldComplement" class="form-input" placeholder="Apto, casa…" />
+          </div>
+        </div>
+
+        <!-- GEOLOCATION CARD -->
+        <div class="geo-card" id="geoCard">
+          <div class="geo-card-top">
+            <span class="geo-icon">📍</span>
+            <div>
+              <p class="geo-title">Usar minha localização atual</p>
+              <p class="geo-sub">Calcula a taxa de entrega automaticamente</p>
+            </div>
+          </div>
+          <button class="geo-btn" id="geoBtn">Detectar localização</button>
+          <div class="geo-result" id="geoResult" style="display:none"></div>
+        </div>
+
+        <!-- DELIVERY FEE DISPLAY -->
+        <div class="delivery-fee-card" id="deliveryFeeCard" style="display:none">
+          <div class="fee-row">
+            <span>🛵 Taxa de entrega</span>
+            <span id="deliveryFeeDisplay" class="fee-amount">R$ 0,00</span>
+          </div>
+          <p id="deliveryFeeMsg" class="fee-msg"></p>
+        </div>
+
+        <button class="next-step-btn" onclick="validateAndGoStep3()">Continuar → Pagamento</button>
+        <button class="back-btn" onclick="goToStep(1)">← Voltar</button>
+      </div>
+
+      <!-- STEP 3: PAYMENT -->
+      <div class="checkout-step" id="step3" style="display:none">
+        <h3 class="step-title">Forma de pagamento</h3>
+        <div class="payment-options">
+          <label class="payment-opt" data-method="pix">
+            <input type="radio" name="payment" value="pix" />
+            <div class="payment-card">
+              <span class="payment-emoji">💸</span>
+              <span class="payment-name">Pix</span>
+              <span class="payment-desc">Pagamento instantâneo</span>
+            </div>
+          </label>
+          <label class="payment-opt" data-method="dinheiro">
+            <input type="radio" name="payment" value="dinheiro" />
+            <div class="payment-card">
+              <span class="payment-emoji">💵</span>
+              <span class="payment-name">Dinheiro</span>
+              <span class="payment-desc">Pague na entrega</span>
+            </div>
+          </label>
+          <label class="payment-opt" data-method="cartao">
+            <input type="radio" name="payment" value="cartao" />
+            <div class="payment-card">
+              <span class="payment-emoji">💳</span>
+              <span class="payment-name">Cartão</span>
+              <span class="payment-desc">Maquininha na entrega</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- PIX QR (fake visual) -->
+        <div class="pix-info" id="pixInfo" style="display:none">
+          <div class="qr-fake">
+            <div class="qr-inner">
+              <span style="font-size:3rem">📲</span>
+              <p>Pague após confirmar o pedido</p>
+            </div>
+          </div>
+          <p class="pix-key">Chave Pix: <strong>62 9847-8229</strong></p>
+        </div>
+
+        <!-- CHANGE FIELD -->
+        <div class="change-field" id="changeField" style="display:none">
+          <label class="form-label">Troco para quanto?</label>
+          <div class="change-input-wrap">
+            <span class="change-prefix">R$</span>
+            <input type="number" id="fieldChange" class="form-input change-input" placeholder="0,00" min="0" step="0.01" />
+          </div>
+        </div>
+
+        <button class="next-step-btn" onclick="validateAndGoStep4()">Continuar → Confirmar</button>
+        <button class="back-btn" onclick="goToStep(2)">← Voltar</button>
+      </div>
+
+      <!-- STEP 4: CONFIRM -->
+      <div class="checkout-step" id="step4" style="display:none">
+        <h3 class="step-title">Confirmar pedido</h3>
+        <div class="confirm-summary" id="confirmSummary"></div>
+        <button class="send-btn" id="sendBtn">
+          <span>✅ CONFIRMAR E ENVIAR PEDIDO</span>
+        </button>
+        <button class="back-btn" onclick="goToStep(3)">← Voltar</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ORDER TRACKER (shown after order sent)      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="tracker-section" id="trackerSection" style="display:none">
+    <div class="tracker-inner">
+      <h2 class="tracker-title">🎉 Pedido enviado!</h2>
+      <p class="tracker-sub">Acompanhe seu pedido em tempo real</p>
+      <div class="tracker-steps">
+        <div class="track-step active" id="track1">
+          <div class="track-icon">✅</div>
+          <span class="track-label">Recebido</span>
+        </div>
+        <div class="track-line" id="tline1"></div>
+        <div class="track-step" id="track2">
+          <div class="track-icon">👨‍🍳</div>
+          <span class="track-label">Preparando</span>
+        </div>
+        <div class="track-line" id="tline2"></div>
+        <div class="track-step" id="track3">
+          <div class="track-icon">🛵</div>
+          <span class="track-label">Saiu!</span>
+        </div>
+        <div class="track-line" id="tline3"></div>
+        <div class="track-step" id="track4">
+          <div class="track-icon">📍</div>
+          <span class="track-label">Chegando</span>
+        </div>
+      </div>
+      <div class="tracker-timer">
+        <span>⏱ Previsão de entrega: </span>
+        <span class="timer-count" id="timerCount">35:00</span>
+      </div>
+      <button class="tracker-new-btn" onclick="resetApp()">Fazer novo pedido</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CART DRAWER                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>🛒 Seu carrinho</h3>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+    <div class="cart-body" id="cartBody">
+      <div class="cart-empty" id="cartEmpty">
+        <p>🍽️ Seu carrinho está vazio</p>
+        <p class="cart-empty-sub">Adicione itens do cardápio</p>
+      </div>
+      <div id="cartItems"></div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-totals">
+        <div class="total-row"><span>Subtotal</span><span id="cartSubtotal">R$ 0,00</span></div>
+        <div class="total-row" id="discountRow" style="display:none"><span>🏷️ Desconto</span><span id="cartDiscount" class="discount-val">- R$ 0,00</span></div>
+        <div class="total-row delivery-row" id="deliveryRow" style="display:none"><span>🛵 Entrega</span><span id="cartDelivery">R$ 0,00</span></div>
+        <div class="total-row total-big"><span>TOTAL</span><span id="cartTotal">R$ 0,00</span></div>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn">Finalizar pedido →</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PRODUCT MODAL                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="product-modal" id="productModal">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-visual" id="modalVisual"></div>
+    <div class="modal-body">
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-price" id="modalPrice"></p>
+
+      <!-- Massa options (shown only for massas) -->
+      <div id="massaOptions" style="display:none">
+        <div class="option-group">
+          <h4 class="option-title">Escolha a Massa *</h4>
+          <div class="option-grid" id="massaTypeGrid"></div>
+        </div>
+        <div class="option-group">
+          <h4 class="option-title">Escolha o Molho *</h4>
+          <div class="option-grid" id="molhoGrid"></div>
+        </div>
+        <div class="option-group">
+          <h4 class="option-title">Tamanho *</h4>
+          <div class="option-grid" id="tamanhoGrid"></div>
+        </div>
+        <div class="option-group">
+          <h4 class="option-title">Acompanhamentos (múltiplos)</h4>
+          <div class="acomp-grid" id="acompGrid"></div>
+        </div>
+      </div>
+
+      <!-- Salgados type selection -->
+      <div id="salgadoOptions" style="display:none">
+        <div class="option-group">
+          <h4 class="option-title">Tipo de Salgado *</h4>
+          <div class="option-grid" id="salgadoTypeGrid"></div>
+        </div>
+        <div class="option-group">
+          <h4 class="option-title">Tamanho/Quantidade *</h4>
+          <div class="option-grid" id="salgadoSizeGrid"></div>
+        </div>
+      </div>
+
+      <!-- Burger extras -->
+      <div id="burgerOptions" style="display:none">
+        <div class="option-group">
+          <h4 class="option-title">Adicionais</h4>
+          <div class="extras-list" id="extrasList"></div>
+        </div>
+      </div>
+
+      <!-- Observations (all products) -->
+      <div class="option-group">
+        <h4 class="option-title">Observações</h4>
+        <textarea class="obs-input" id="obsInput" placeholder="Ex: sem cebola, molho separado…" rows="2"></textarea>
+      </div>
+
+      <!-- Quantity -->
+      <div class="qty-row">
+        <button class="qty-btn" id="qtyMinus">−</button>
+        <span class="qty-display" id="qtyDisplay">1</span>
+        <button class="qty-btn" id="qtyPlus">+</button>
+      </div>
+
+      <div class="modal-total-row">
+        <span>Total do item:</span>
+        <span class="modal-item-total" id="modalItemTotal">R$ 0,00</span>
+      </div>
+
+      <button class="add-to-cart-btn" id="addToCartBtn">Adicionar ao carrinho 🛒</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- UPSELL BOTTOM SHEET                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="upsell-overlay" id="upsellOverlay"></div>
+  <div class="upsell-sheet" id="upsellSheet">
+    <div class="upsell-content">
+      <p class="upsell-title" id="upsellTitle">🔥 Complete seu combo!</p>
+      <p class="upsell-desc" id="upsellDesc"></p>
+      <div class="upsell-btns">
+        <button class="upsell-yes" id="upsellYes">Adicionar ao combo</button>
+        <button class="upsell-no" id="upsellNo">Não, obrigado</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FLOATING WHATSAPP BUTTON                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <a href="https://wa.me/5562984782299" target="_blank" class="float-wa" id="floatWa" aria-label="WhatsApp">
+    <span class="wa-icon">💬</span>
+    <span class="wa-tooltip">Fale conosco</span>
+  </a>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SOCIAL PROOF NOTIFICATION                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="social-proof" id="socialProof">
+    <span id="socialProofText"></span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BOTTOM NAVIGATION (mobile)                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="bnav-btn active" onclick="showSection('menu')" id="bnav-menu">
+      <span>🍽️</span><span class="bnav-label">Cardápio</span>
+    </button>
+    <button class="bnav-btn" onclick="focusSearch()" id="bnav-search">
+      <span>🔍</span><span class="bnav-label">Buscar</span>
+    </button>
+    <button class="bnav-btn" onclick="openCart()" id="bnav-cart">
+      <span>🛒</span><span class="bnav-label">Carrinho</span>
+      <span class="bnav-badge" id="bnavBadge" style="display:none">0</span>
+    </button>
+    <button class="bnav-btn" onclick="goCheckout()" id="bnav-order">
+      <span>📋</span><span class="bnav-label">Pedido</span>
+    </button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
