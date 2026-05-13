@@ -61,7 +61,7 @@ const CARDAPIO = {
       descricao: "Nossa massa especial com camarão fresquinho. Escolha a massa, molho e acompanhamentos.",
       preco: 32.00,
       precoDisplay: "R$ 32,00",
-      emoji: "🍤",
+      emoji: "blob:https://web.whatsapp.com/a6f29e78-b8fc-4178-839c-0e1195869817",
       categoria: "massas",
       badge: "promo",
       tipo: "massa",
