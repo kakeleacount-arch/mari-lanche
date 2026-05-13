@@ -6,8 +6,7 @@
 /* ───────────────────────────────────────────────────────────────
    ⚙️  CONFIGURAÇÕES — ALTERE AQUI PARA PERSONALIZAR
    ─────────────────────────────────────────────────────────────── */
-const CONFIG = {
-  WHATSAPP_NUMBER: "556298478229",   // Número do WhatsApp (sem + ou espaços)
+const CONFIG = {   // Número do WhatsApp (sem + ou espaços)
   LOJA_LAT: -5.3290,                 // Latitude da Mari Massas (5°19'44.3"S)
   LOJA_LNG: -49.0917,                // Longitude da Mari Massas (49°05'30.2"W)
   CUPOM_VALIDO: "MARIFIRST",         // Cupom de desconto
@@ -61,7 +60,6 @@ const CARDAPIO = {
       descricao: "Nossa massa especial com camarão fresquinho. Escolha a massa, molho e acompanhamentos.",
       preco: 32.00,
       precoDisplay: "R$ 32,00",
-      emoji: "https://i.ibb.co/27g5gb2Y/Whats-App-Image-2026-05-13-at-12-02-29.jpg",
       categoria: "massas",
       badge: "promo",
       tipo: "massa",
